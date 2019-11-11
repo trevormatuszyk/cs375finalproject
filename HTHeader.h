@@ -1,22 +1,23 @@
 #include <list>
 #include <string>
 
-using namespace std; 
+using namespace std;
 
-class HashTable { 
+class HashTable {
 	int buckets;
 
-	list<string> *table; 
-public: 
-	HashTable(int b);
+	list<string> *table;
 
-	void insert_item(string x); 
+	int func;
+public:
+	HashTable(int b, int func);
 
-	void delete_item(string key); 
+	void insert_item(string x);
+
+	void delete_item(string key);
 
 	int make_hash(string str);
 
-	void display_hash_table(); 
+	void display_hash_table();
 
-}; 
-
+};
