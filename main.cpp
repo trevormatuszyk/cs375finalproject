@@ -20,11 +20,13 @@ int HashTable::make_hash(string str){
 		//cout << (int)str[i] << endl;
 		num += (int)str[i];
 	}
+	int hash = 0;
 
 	switch (func) {
-		case '1': int hash = num % buckets;
+		case 1: hash = num % buckets;
 							break;
-		case '2': int hash = multMethod(num);
+		case 2: hash = multMethod(num);
+							break;
 	}
 
 	return hash;
@@ -50,6 +52,7 @@ void HashTable::display_hash_table(){
 		cout << endl;
 
 	}
+	cout << " " << endl;
 
 }
 
@@ -71,9 +74,10 @@ vector<string> read_data(){
 	return names;
 }
 
-HashTable::multMethod(int key) {
+int HashTable::multMethod(int key) {
 	double a = (sqrt(5) - 1) / 2;
 	int hash = (int) floor(buckets * (((double) key * a) - floor((double) key * a)));
+	return hash;
 }
 
 

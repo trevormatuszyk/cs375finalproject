@@ -20,4 +20,6 @@ public:
 
 	void display_hash_table();
 
+	int multMethod(int key);
+
 };
