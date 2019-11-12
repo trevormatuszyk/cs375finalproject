@@ -18,7 +18,6 @@ int HashTable::make_hash(string str){
 	int num = 0;
 
 	for(int i=0; i<str.size(); i++){
-		//cout << (int)str[i] << endl;
 		num += (int)str[i];
 	}
 	int hash = 0;
