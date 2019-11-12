@@ -5,12 +5,12 @@ using namespace std;
 
 class HashTable {
 	int buckets;
-
 	list<string> *table;
+	int hash_method;
+	int coll_res;
 
-	int func;
 public:
-	HashTable(int b, int func);
+	HashTable(int b, int hash_method, int coll_res);
 
 	void insert_item(string x);
 

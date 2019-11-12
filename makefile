@@ -15,8 +15,6 @@ run: all
 	./$(M)
 
 
-
-
 checkmem: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(M)
 

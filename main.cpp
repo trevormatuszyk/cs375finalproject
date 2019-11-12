@@ -5,10 +5,11 @@
 #include "HTHeader.h"
 
 
-HashTable::HashTable(int b, int func){
+HashTable::HashTable(int b, int hash_method, int coll_res){
 	this->buckets = b;
 	table = new list<string>[buckets];
-	this->func = func;
+	this->hash_method = hash_method;
+	this->coll_res = coll_res;
 }
 
 
@@ -22,13 +23,12 @@ int HashTable::make_hash(string str){
 	}
 	int hash = 0;
 
-	switch (func) {
+	switch (hash_method) {
 		case 1: hash = num % buckets;
 							break;
 		case 2: hash = multMethod(num);
 							break;
 	}
-
 	return hash;
 }
 
@@ -59,7 +59,35 @@ void HashTable::display_hash_table(){
 
 void HashTable::insert_item(string name) {
 	int index = make_hash(name);
-	table[index].push_back(name);
+	
+
+	switch (coll_res) {
+		case 1: //chaining
+			table[index].push_back(name); 
+			break;
+
+		case 2: //linear probing
+			//cout << "here?" << endl;
+			if(table[index].empty()){
+				table[index].push_back(name); 
+			}
+			else{
+				int tmp_index = index;
+				while(tmp_index != buckets-1){
+					if(table[tmp_index].empty()){
+						table[tmp_index].push_back(name);
+						break;
+					}
+					else{
+						tmp_index++;
+						continue;
+					}
+				}
+			}
+			break;
+	}
+
+
 }
 
 vector<string> read_data(){
@@ -85,18 +113,27 @@ int main(int argc, char *argv[]) {
 
 	vector<string> names = read_data();
 
-	HashTable divHT(names.size(), 1);
+	HashTable divHT(names.size(), 1, 1);
 
 	for(int i=0; i<names.size(); i++){
 		divHT.insert_item(names[i]);
 	}
 	divHT.display_hash_table();
 
+	HashTable divHT2(names.size(), 1, 2);
+
+	for(int i=0; i<names.size(); i++){
+		divHT2.insert_item(names[i]);
+	}
+	divHT2.display_hash_table();
+
+	/*
 	HashTable multHT(names.size(), 2);
 	for (int i=0; i<names.size(); i++) {
 		multHT.insert_item(names[i]);
 	}
 	multHT.display_hash_table();
+	*/
 
 
 	return 0;
