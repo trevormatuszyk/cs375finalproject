@@ -67,7 +67,7 @@ void HashTable::insert_item(string name) {
 			break;
 
 		case 2: //linear probing
-			//cout << "here?" << endl;
+			
 			if(table[index].empty()){
 				table[index].push_back(name); 
 			}
@@ -80,6 +80,36 @@ void HashTable::insert_item(string name) {
 					}
 					else{
 						tmp_index++;
+						continue;
+					}
+				}
+			}
+			break;
+		case 3: //quadratic probing
+			
+			if(table[index].empty()){
+				table[index].push_back(name); 
+			}
+
+			else{
+				int tmp_index = index;
+				int counter = 1;
+				while(tmp_index != buckets-1){
+					if(table[tmp_index].empty()){
+						table[tmp_index].push_back(name);
+						break;
+					}
+					else{
+						tmp_index = tmp_index + (counter*counter);
+						tmp_index = tmp_index % buckets;
+						counter++;
+						/*
+						if(tmp_index > 49){
+							cout << tmp_index << endl;
+							//tmp_index = tmp_index % buckets;
+							cout << tmp_index << endl;
+						}
+						*/
 						continue;
 					}
 				}
@@ -113,27 +143,39 @@ int main(int argc, char *argv[]) {
 
 	vector<string> names = read_data();
 
-	HashTable divHT(names.size(), 1, 1);
+
+	clock_t tStart = clock();
+
+	HashTable divHT_chain(names.size(), 1, 1);
 
 	for(int i=0; i<names.size(); i++){
-		divHT.insert_item(names[i]);
+		divHT_chain.insert_item(names[i]);
 	}
-	divHT.display_hash_table();
+	//divHT_chain.display_hash_table();
 
-	HashTable divHT2(names.size(), 1, 2);
+	cout << "Chaining Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+
+
+	tStart = clock();
+	HashTable divHT_linear(names.size(), 1, 2);
 
 	for(int i=0; i<names.size(); i++){
-		divHT2.insert_item(names[i]);
+		divHT_linear.insert_item(names[i]);
 	}
-	divHT2.display_hash_table();
+	//divHT_linear.display_hash_table();
 
-	/*
-	HashTable multHT(names.size(), 2);
-	for (int i=0; i<names.size(); i++) {
-		multHT.insert_item(names[i]);
+	cout << "Linear Probing Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+
+
+	tStart = clock();
+	HashTable divHT_quadratic(names.size(), 1, 3);
+
+	for(int i=0; i<names.size(); i++){
+		divHT_quadratic.insert_item(names[i]);
 	}
-	multHT.display_hash_table();
-	*/
+	//divHT_quadratic.display_hash_table();
+
+	cout << "Quadratic Probing Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
 
 
 	return 0;
