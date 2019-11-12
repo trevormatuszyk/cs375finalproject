@@ -100,16 +100,9 @@ void HashTable::insert_item(string name) {
 						break;
 					}
 					else{
-						tmp_index = tmp_index + (counter*counter);
+						tmp_index += (counter*counter);
 						tmp_index = tmp_index % buckets;
 						counter++;
-						/*
-						if(tmp_index > 49){
-							cout << tmp_index << endl;
-							//tmp_index = tmp_index % buckets;
-							cout << tmp_index << endl;
-						}
-						*/
 						continue;
 					}
 				}
