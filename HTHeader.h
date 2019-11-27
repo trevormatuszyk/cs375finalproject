@@ -22,4 +22,10 @@ public:
 
 	int multMethod(int key);
 
+	int linear_mod_collisions;
+	int quadratic_mod_collisions;
+
+	int linear_mul_collisions;
+	int quadratic_mul_collisions;
+
 };

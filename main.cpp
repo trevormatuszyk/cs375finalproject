@@ -10,6 +10,12 @@ HashTable::HashTable(int b, int hash_method, int coll_res){
 	table = new list<string>[buckets];
 	this->hash_method = hash_method;
 	this->coll_res = coll_res;
+
+	this->linear_mod_collisions = 0;
+	this->quadratic_mod_collisions = 0;
+
+	this->linear_mul_collisions = 0;
+	this->quadratic_mul_collisions = 0;
 }
 
 
@@ -24,9 +30,9 @@ int HashTable::make_hash(string str){
 
 	switch (hash_method) {
 		case 1: hash = num % buckets;
-							break;
+			break;
 		case 2: hash = multMethod(num);
-							break;
+			break;
 	}
 	return hash;
 }
@@ -57,6 +63,7 @@ void HashTable::display_hash_table(){
 
 
 void HashTable::insert_item(string name) {
+
 	int index = make_hash(name);
 	
 
@@ -71,6 +78,14 @@ void HashTable::insert_item(string name) {
 				table[index].push_back(name); 
 			}
 			else{
+				if(hash_method == 1){
+					//cout << "linear mod collision: " << quadratic_mul_collisions << endl;
+					linear_mod_collisions++;
+				}
+				else if(hash_method == 2){
+					//cout << "linear mul collision: " << quadratic_mul_collisions << endl;
+					linear_mul_collisions++;
+				}
 				int tmp_index = index;
 				while(tmp_index != buckets-1){
 					if(table[tmp_index].empty()){
@@ -91,6 +106,14 @@ void HashTable::insert_item(string name) {
 			}
 
 			else{
+				if(hash_method == 1){
+					//cout << "quad mod collision: " << quadratic_mul_collisions << endl;
+					quadratic_mod_collisions++;
+				}
+				else if(hash_method == 2){
+					//cout << "quad mul collision: " << quadratic_mul_collisions << endl;
+					quadratic_mul_collisions++;
+				}
 				int tmp_index = index;
 				int counter = 1;
 				while(tmp_index != buckets-1){
@@ -113,15 +136,15 @@ void HashTable::insert_item(string name) {
 }
 
 vector<string> read_data(){
-	vector<string> names;
-	ifstream input("names.txt");
+	vector<string> strings;
+	ifstream input("password.txt");
 
 	for(string line; getline(input, line); ){
 
-		names.push_back(line);
+		strings.push_back(line);
 	}
 	input.close();
-	return names;
+	return strings;
 }
 
 int HashTable::multMethod(int key) {
@@ -137,38 +160,75 @@ int main(int argc, char *argv[]) {
 
 
 	clock_t tStart = clock();
-
-	HashTable divHT_chain(names.size(), 1, 1);
+	
+	HashTable divHT_chain(names.size()+10000, 1, 1);
 
 	for(int i=0; i<names.size(); i++){
 		divHT_chain.insert_item(names[i]);
 	}
 	//divHT_chain.display_hash_table();
 
-	cout << "Chaining Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
-
-
+	cout << "Chaining Time Mod Method taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << endl;
+	
 	tStart = clock();
-	HashTable divHT_linear(names.size(), 1, 2);
+	HashTable divHT_linear(names.size()+10000, 1, 2);
 
 	for(int i=0; i<names.size(); i++){
 		divHT_linear.insert_item(names[i]);
 	}
 	//divHT_linear.display_hash_table();
 
-	cout << "Linear Probing Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
-
+	cout << "Linear Probing Mod Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Linear Probing Mod Method Collisions: " << divHT_linear.linear_mod_collisions << endl; 
+	cout << endl;
 
 	tStart = clock();
-	HashTable divHT_quadratic(names.size(), 1, 3);
+	HashTable divHT_quadratic(names.size()+10000, 1, 3);
 
 	for(int i=0; i<names.size(); i++){
 		divHT_quadratic.insert_item(names[i]);
 	}
 	//divHT_quadratic.display_hash_table();
 
-	cout << "Quadratic Probing Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Quadratic Probing Mod Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Quadratic Probing Mod Method Collisions: " << divHT_quadratic.quadratic_mod_collisions << endl;
+	cout << endl;
 
 
+	tStart = clock();
+
+	HashTable divMT_chain(names.size()+10000, 2, 1);
+
+	for(int i=0; i<names.size(); i++){
+		divMT_chain.insert_item(names[i]);
+	}
+	//divHT_chain.display_hash_table();
+
+	cout << "Chaining Time Mult Method taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << endl;
+
+	tStart = clock();
+	HashTable divMT_linear(names.size()+10000, 2, 2);
+
+	for(int i=0; i<names.size(); i++){
+		divMT_linear.insert_item(names[i]);
+	}
+	//divHT_linear.display_hash_table();
+
+	cout << "Linear Probing Mult Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Linear Probing Mult Method Collisions: " << divMT_linear.linear_mul_collisions << endl;
+	cout << endl;
+
+	tStart = clock();
+	HashTable divMT_quadratic(names.size()+10000, 2, 3);
+
+	for(int i=0; i<names.size(); i++){
+		divMT_quadratic.insert_item(names[i]);
+	}
+	//divHT_quadratic.display_hash_table();
+
+	cout << "Quadratic Probing Mult Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Quadratic Probing Mult Method Collisions: " << divMT_quadratic.quadratic_mul_collisions << endl;
 	return 0;
 }
