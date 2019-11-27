@@ -1,0 +1,254 @@
+---------------------------------------------------------------
+running ./finalproject with 0  bucket padding and password.txt
+Chaining Time Mod Method taken: 0.004837
+
+Linear Probing Mod Method Time taken: 0.40981
+Linear Probing Mod Method Collisions: 9771
+
+Quadratic Probing Mod Method Time taken: 0.010232
+Quadratic Probing Mod Method Collisions: 9752
+
+Chaining Time Mult Method taken: 0.004774
+
+Linear Probing Mult Method Time taken: 0.015277
+Linear Probing Mult Method Collisions: 9369
+
+Quadratic Probing Mult Method Time taken: 0.010768
+Quadratic Probing Mult Method Collisions: 9327
+---------------------------------------------------------------
+running ./finalproject with 2000  bucket padding and password.txt
+Chaining Time Mod Method taken: 0.004923
+
+Linear Probing Mod Method Time taken: 0.40789
+Linear Probing Mod Method Collisions: 9771
+
+Quadratic Probing Mod Method Time taken: 0.009248
+Quadratic Probing Mod Method Collisions: 9754
+
+Chaining Time Mult Method taken: 0.004901
+
+Linear Probing Mult Method Time taken: 0.008487
+Linear Probing Mult Method Collisions: 9349
+
+Quadratic Probing Mult Method Time taken: 0.009569
+Quadratic Probing Mult Method Collisions: 9426
+---------------------------------------------------------------
+running ./finalproject with 4000  bucket padding and password.txt
+Chaining Time Mod Method taken: 0.005171
+
+Linear Probing Mod Method Time taken: 0.41556
+Linear Probing Mod Method Collisions: 9771
+
+Quadratic Probing Mod Method Time taken: 0.011576
+Quadratic Probing Mod Method Collisions: 9751
+
+Chaining Time Mult Method taken: 0.004924
+
+Linear Probing Mult Method Time taken: 0.007301
+Linear Probing Mult Method Collisions: 9335
+
+Quadratic Probing Mult Method Time taken: 0.010972
+Quadratic Probing Mult Method Collisions: 9373
+---------------------------------------------------------------
+running ./finalproject with 6000  bucket padding and password.txt
+Chaining Time Mod Method taken: 0.005968
+
+Linear Probing Mod Method Time taken: 0.414269
+Linear Probing Mod Method Collisions: 9771
+
+Quadratic Probing Mod Method Time taken: 0.009044
+Quadratic Probing Mod Method Collisions: 9751
+
+Chaining Time Mult Method taken: 0.005018
+
+Linear Probing Mult Method Time taken: 0.007756
+Linear Probing Mult Method Collisions: 9318
+
+Quadratic Probing Mult Method Time taken: 0.009032
+Quadratic Probing Mult Method Collisions: 9344
+---------------------------------------------------------------
+running ./finalproject with 8000  bucket padding and password.txt
+Chaining Time Mod Method taken: 0.005042
+
+Linear Probing Mod Method Time taken: 0.412225
+Linear Probing Mod Method Collisions: 9771
+
+Quadratic Probing Mod Method Time taken: 0.010788
+Quadratic Probing Mod Method Collisions: 9753
+
+Chaining Time Mult Method taken: 0.005093
+
+Linear Probing Mult Method Time taken: 0.008528
+Linear Probing Mult Method Collisions: 9315
+
+Quadratic Probing Mult Method Time taken: 0.008921
+Quadratic Probing Mult Method Collisions: 9350
+---------------------------------------------------------------
+running ./finalproject with 0  bucket padding and names.txt
+Chaining Time Mod Method taken: 3.3e-05
+
+Linear Probing Mod Method Time taken: 2.4e-05
+Linear Probing Mod Method Collisions: 24
+
+Quadratic Probing Mod Method Time taken: 4.7e-05
+Quadratic Probing Mod Method Collisions: 27
+
+Chaining Time Mult Method taken: 3.9e-05
+
+Linear Probing Mult Method Time taken: 3.8e-05
+Linear Probing Mult Method Collisions: 24
+
+---------------------------------------------------------------
+running ./finalproject with 2000  bucket padding and names.txt
+Chaining Time Mod Method taken: 0.000163
+
+Linear Probing Mod Method Time taken: 0.000129
+Linear Probing Mod Method Collisions: 2
+
+Quadratic Probing Mod Method Time taken: 0.000141
+Quadratic Probing Mod Method Collisions: 2
+
+Chaining Time Mult Method taken: 0.000138
+
+Linear Probing Mult Method Time taken: 0.000142
+Linear Probing Mult Method Collisions: 2
+
+Quadratic Probing Mult Method Time taken: 0.000142
+Quadratic Probing Mult Method Collisions: 2
+---------------------------------------------------------------
+running ./finalproject with 4000  bucket padding and names.txt
+Chaining Time Mod Method taken: 0.000268
+
+Linear Probing Mod Method Time taken: 0.000263
+Linear Probing Mod Method Collisions: 2
+
+Quadratic Probing Mod Method Time taken: 0.000253
+Quadratic Probing Mod Method Collisions: 2
+
+Chaining Time Mult Method taken: 0.000245
+
+Linear Probing Mult Method Time taken: 0.000275
+Linear Probing Mult Method Collisions: 2
+
+Quadratic Probing Mult Method Time taken: 0.000278
+Quadratic Probing Mult Method Collisions: 2
+---------------------------------------------------------------
+running ./finalproject with 6000  bucket padding and names.txt
+Chaining Time Mod Method taken: 0.000364
+
+Linear Probing Mod Method Time taken: 0.000354
+Linear Probing Mod Method Collisions: 2
+
+Quadratic Probing Mod Method Time taken: 0.000372
+Quadratic Probing Mod Method Collisions: 2
+
+Chaining Time Mult Method taken: 0.000352
+
+Linear Probing Mult Method Time taken: 0.000344
+Linear Probing Mult Method Collisions: 2
+
+Quadratic Probing Mult Method Time taken: 0.000418
+Quadratic Probing Mult Method Collisions: 2
+---------------------------------------------------------------
+running ./finalproject with 8000  bucket padding and names.txt
+Chaining Time Mod Method taken: 0.000464
+
+Linear Probing Mod Method Time taken: 0.000452
+Linear Probing Mod Method Collisions: 2
+
+Quadratic Probing Mod Method Time taken: 0.000436
+Quadratic Probing Mod Method Collisions: 2
+
+Chaining Time Mult Method taken: 0.000452
+
+Linear Probing Mult Method Time taken: 0.000434
+Linear Probing Mult Method Collisions: 2
+
+Quadratic Probing Mult Method Time taken: 0.000441
+Quadratic Probing Mult Method Collisions: 2
+---------------------------------------------------------------
+running ./finalproject with 0  bucket padding and names_big.txt
+Chaining Time Mod Method taken: 0.002335
+
+Linear Probing Mod Method Time taken: 0.097831
+Linear Probing Mod Method Collisions: 4762
+
+Quadratic Probing Mod Method Time taken: 0.005772
+Quadratic Probing Mod Method Collisions: 4743
+
+Chaining Time Mult Method taken: 0.002335
+
+Linear Probing Mult Method Time taken: 0.004148
+Linear Probing Mult Method Collisions: 4443
+
+Quadratic Probing Mult Method Time taken: 0.004661
+Quadratic Probing Mult Method Collisions: 4479
+---------------------------------------------------------------
+running ./finalproject with 2000  bucket padding and names_big.txt
+Chaining Time Mod Method taken: 0.002517
+
+Linear Probing Mod Method Time taken: 0.097765
+Linear Probing Mod Method Collisions: 4762
+
+Quadratic Probing Mod Method Time taken: 0.003805
+Quadratic Probing Mod Method Collisions: 4742
+
+Chaining Time Mult Method taken: 0.002397
+
+Linear Probing Mult Method Time taken: 0.003095
+Linear Probing Mult Method Collisions: 4404
+
+Quadratic Probing Mult Method Time taken: 0.004009
+Quadratic Probing Mult Method Collisions: 4529
+---------------------------------------------------------------
+running ./finalproject with 4000  bucket padding and names_big.txt
+Chaining Time Mod Method taken: 0.002517
+
+Linear Probing Mod Method Time taken: 0.098401
+Linear Probing Mod Method Collisions: 4762
+
+Quadratic Probing Mod Method Time taken: 0.003846
+Quadratic Probing Mod Method Collisions: 4742
+
+Chaining Time Mult Method taken: 0.002498
+
+Linear Probing Mult Method Time taken: 0.003105
+Linear Probing Mult Method Collisions: 4385
+
+Quadratic Probing Mult Method Time taken: 0.003466
+Quadratic Probing Mult Method Collisions: 4409
+---------------------------------------------------------------
+running ./finalproject with 6000  bucket padding and names_big.txt
+Chaining Time Mod Method taken: 0.00249
+
+Linear Probing Mod Method Time taken: 0.097201
+Linear Probing Mod Method Collisions: 4762
+
+Quadratic Probing Mod Method Time taken: 0.004
+Quadratic Probing Mod Method Collisions: 4741
+
+Chaining Time Mult Method taken: 0.002585
+
+Linear Probing Mult Method Time taken: 0.003187
+Linear Probing Mult Method Collisions: 4382
+
+Quadratic Probing Mult Method Time taken: 0.003477
+Quadratic Probing Mult Method Collisions: 4408
+---------------------------------------------------------------
+running ./finalproject with 8000  bucket padding and names_big.txt
+Chaining Time Mod Method taken: 0.002896
+
+Linear Probing Mod Method Time taken: 0.098935
+Linear Probing Mod Method Collisions: 4762
+
+Quadratic Probing Mod Method Time taken: 0.006574
+Quadratic Probing Mod Method Collisions: 4743
+
+Chaining Time Mult Method taken: 0.003209
+
+Linear Probing Mult Method Time taken: 0.004319
+Linear Probing Mult Method Collisions: 4377
+
+Quadratic Probing Mult Method Time taken: 0.003676
+Quadratic Probing Mult Method Collisions: 4402
+---------------------------------------------------------------

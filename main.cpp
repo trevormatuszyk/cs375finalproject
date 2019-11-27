@@ -135,9 +135,9 @@ void HashTable::insert_item(string name) {
 
 }
 
-vector<string> read_data(){
+vector<string> read_data(string file_name){
 	vector<string> strings;
-	ifstream input("password.txt");
+	ifstream input(file_name);
 
 	for(string line; getline(input, line); ){
 
@@ -156,12 +156,18 @@ int HashTable::multMethod(int key) {
 
 int main(int argc, char *argv[]) {
 
-	vector<string> names = read_data();
+	if(argc != 3){
+		cout << "run with prg_name file_name bucket_padding" << endl;
+		exit(1);
+	}
 
+	vector<string> names = read_data(argv[1]);
 
 	clock_t tStart = clock();
+
+	int val = atoi(argv[2]);
 	
-	HashTable divHT_chain(names.size()+10000, 1, 1);
+	HashTable divHT_chain(names.size()+val, 1, 1);
 
 	for(int i=0; i<names.size(); i++){
 		divHT_chain.insert_item(names[i]);
@@ -172,7 +178,7 @@ int main(int argc, char *argv[]) {
 	cout << endl;
 	
 	tStart = clock();
-	HashTable divHT_linear(names.size()+10000, 1, 2);
+	HashTable divHT_linear(names.size()+val, 1, 2);
 
 	for(int i=0; i<names.size(); i++){
 		divHT_linear.insert_item(names[i]);
@@ -184,7 +190,7 @@ int main(int argc, char *argv[]) {
 	cout << endl;
 
 	tStart = clock();
-	HashTable divHT_quadratic(names.size()+10000, 1, 3);
+	HashTable divHT_quadratic(names.size()+val, 1, 3);
 
 	for(int i=0; i<names.size(); i++){
 		divHT_quadratic.insert_item(names[i]);
@@ -198,7 +204,7 @@ int main(int argc, char *argv[]) {
 
 	tStart = clock();
 
-	HashTable divMT_chain(names.size()+10000, 2, 1);
+	HashTable divMT_chain(names.size()+val, 2, 1);
 
 	for(int i=0; i<names.size(); i++){
 		divMT_chain.insert_item(names[i]);
@@ -209,7 +215,7 @@ int main(int argc, char *argv[]) {
 	cout << endl;
 
 	tStart = clock();
-	HashTable divMT_linear(names.size()+10000, 2, 2);
+	HashTable divMT_linear(names.size()+val, 2, 2);
 
 	for(int i=0; i<names.size(); i++){
 		divMT_linear.insert_item(names[i]);
@@ -221,7 +227,7 @@ int main(int argc, char *argv[]) {
 	cout << endl;
 
 	tStart = clock();
-	HashTable divMT_quadratic(names.size()+10000, 2, 3);
+	HashTable divMT_quadratic(names.size()+val, 2, 3);
 
 	for(int i=0; i<names.size(); i++){
 		divMT_quadratic.insert_item(names[i]);
