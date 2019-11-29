@@ -178,6 +178,7 @@ int HashTable::radixMethod(int key, int buckets) {
 		hash += remainder * dec;
 		dec *= 10;
 	}
+	hash = hash % buckets;
 	return hash;
 }
 
