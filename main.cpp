@@ -16,6 +16,9 @@ HashTable::HashTable(int b, int hash_method, int coll_res){
 
 	this->linear_mul_collisions = 0;
 	this->quadratic_mul_collisions = 0;
+
+	this->linear_rad_collisions = 0;
+	this->quadratic_rad_collisions = 0;
 }
 
 
@@ -32,6 +35,8 @@ int HashTable::make_hash(string str){
 		case 1: hash = num % buckets;
 			break;
 		case 2: hash = multMethod(num);
+			break;
+		case 3: hash = radixMethod(num, buckets);
 			break;
 	}
 	return hash;
@@ -65,17 +70,17 @@ void HashTable::display_hash_table(){
 void HashTable::insert_item(string name) {
 
 	int index = make_hash(name);
-	
+
 
 	switch (coll_res) {
 		case 1: //chaining
-			table[index].push_back(name); 
+			table[index].push_back(name);
 			break;
 
 		case 2: //linear probing
-			
+
 			if(table[index].empty()){
-				table[index].push_back(name); 
+				table[index].push_back(name);
 			}
 			else{
 				if(hash_method == 1){
@@ -85,6 +90,10 @@ void HashTable::insert_item(string name) {
 				else if(hash_method == 2){
 					//cout << "linear mul collision: " << quadratic_mul_collisions << endl;
 					linear_mul_collisions++;
+				}
+				else if(hash_method == 3){
+  					//cout << "linear rad collision: " << quadratic_rad_collisions << endl;
+					linear_rad_collisions++;
 				}
 				int tmp_index = index;
 				while(tmp_index != buckets-1){
@@ -100,9 +109,9 @@ void HashTable::insert_item(string name) {
 			}
 			break;
 		case 3: //quadratic probing
-			
+
 			if(table[index].empty()){
-				table[index].push_back(name); 
+				table[index].push_back(name);
 			}
 
 			else{
@@ -113,6 +122,10 @@ void HashTable::insert_item(string name) {
 				else if(hash_method == 2){
 					//cout << "quad mul collision: " << quadratic_mul_collisions << endl;
 					quadratic_mul_collisions++;
+				}
+				else if(hash_method == 3){
+					//cout << "quad rad collision: " << quadratic_rad_collisions << endl;
+					quadratic_rad_collisions++;
 				}
 				int tmp_index = index;
 				int counter = 1;
@@ -153,6 +166,15 @@ int HashTable::multMethod(int key) {
 	return hash;
 }
 
+int HashTable::radixMethod(int key, int buckets) {
+	int hash = key;
+	int newBase = 100;
+	do {hash = hash % newBase;
+	} while ((hash / newBase) != 0);
+	hash = hash % buckets;
+	return hash;
+}
+
 
 int main(int argc, char *argv[]) {
 
@@ -166,7 +188,7 @@ int main(int argc, char *argv[]) {
 	clock_t tStart = clock();
 
 	int val = atoi(argv[2]);
-	
+
 	HashTable divHT_chain(names.size()+val, 1, 1);
 
 	for(int i=0; i<names.size(); i++){
@@ -176,7 +198,7 @@ int main(int argc, char *argv[]) {
 
 	cout << "Chaining Time Mod Method taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
 	cout << endl;
-	
+
 	tStart = clock();
 	HashTable divHT_linear(names.size()+val, 1, 2);
 
@@ -186,7 +208,7 @@ int main(int argc, char *argv[]) {
 	//divHT_linear.display_hash_table();
 
 	cout << "Linear Probing Mod Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
-	cout << "Linear Probing Mod Method Collisions: " << divHT_linear.linear_mod_collisions << endl; 
+	cout << "Linear Probing Mod Method Collisions: " << divHT_linear.linear_mod_collisions << endl;
 	cout << endl;
 
 	tStart = clock();
@@ -236,5 +258,43 @@ int main(int argc, char *argv[]) {
 
 	cout << "Quadratic Probing Mult Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
 	cout << "Quadratic Probing Mult Method Collisions: " << divMT_quadratic.quadratic_mul_collisions << endl;
+	cout << endl;
+
+	tStart = clock();
+
+	HashTable radMT_chain(names.size()+val, 3 , 1);
+
+	for(int i=0; i<names.size(); i++){
+		radMT_chain.insert_item(names[i]);
+	}
+	//radMT_chain.display_hash_table();
+
+	cout << "Chaining Time Radix Method taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << endl;
+
+	tStart = clock();
+	HashTable radMT_linear(names.size() + val, 3, 2);
+
+	for (int i = 0; i < names.size(); i++) {
+		radMT_linear.insert_item(names[i]);
+	}
+
+	//radMT_chain.display_hash_table();
+
+	cout << "Linear Probing Radix Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Linear Probing Radix Method Collisions: " << radMT_linear.linear_rad_collisions << endl;
+	cout << endl;
+
+	tStart = clock();
+	HashTable radMT_quadratic(names.size()+val, 3, 3);
+
+	for(int i=0; i<names.size(); i++){
+		radMT_quadratic.insert_item(names[i]);
+	}
+	//radMT_quadratic.display_hash_table();
+
+	cout << "Quadratic Probing Radix Method Time taken: " <<  (double)(clock() - tStart)/CLOCKS_PER_SEC << endl;
+	cout << "Quadratic Probing Radix Method Collisions: " << radMT_quadratic.quadratic_rad_collisions << endl;
+	cout << endl;
 	return 0;
 }

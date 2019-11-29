@@ -22,10 +22,15 @@ public:
 
 	int multMethod(int key);
 
+	int radixMethod(int key, int buckets);
+
 	int linear_mod_collisions;
 	int quadratic_mod_collisions;
 
 	int linear_mul_collisions;
 	int quadratic_mul_collisions;
+
+	int linear_rad_collisions;
+	int quadratic_rad_collisions;
 
 };
