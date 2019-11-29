@@ -166,12 +166,18 @@ int HashTable::multMethod(int key) {
 	return hash;
 }
 
+
 int HashTable::radixMethod(int key, int buckets) {
-	int hash = key;
-	int newBase = 100;
-	do {hash = hash % newBase;
-	} while ((hash / newBase) != 0);
-	hash = hash % buckets;
+	int newBase = 8;
+	int remainder = 1;
+	int dec = 1;
+	int hash = 0;
+	while (key != 0) {
+		remainder = key % newBase;
+		key /= newBase;
+		hash += remainder * dec;
+		dec *= 10;
+	}
 	return hash;
 }
 

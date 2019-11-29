@@ -21,7 +21,7 @@ public:
 	void display_hash_table();
 
 	int multMethod(int key);
-
+	
 	int radixMethod(int key, int buckets);
 
 	int linear_mod_collisions;
