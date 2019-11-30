@@ -190,7 +190,6 @@ int main(int argc, char *argv[]) {
 	}
 
 	vector<string> names = read_data(argv[1]);
-	cout << names.size() << endl;
 
 	clock_t tStart = clock();
 
