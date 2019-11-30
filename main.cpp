@@ -128,12 +128,14 @@ void HashTable::insert_item(string name) {
 				}
 				int tmp_index = index;
 				int counter = 1;
-				while(tmp_index != buckets-1){
+				while(tmp_index != buckets-1 && tmp_index >= 0){
+					//cout << "Index is " << tmp_index << endl;
 					if(table[tmp_index].empty()){
 						table[tmp_index].push_back(name);
 						break;
 					}
 					else{
+						//cout << "Counter is " <<  counter << endl;
 						tmp_index += (counter*counter);
 						tmp_index = tmp_index % buckets;
 						counter++;
@@ -143,6 +145,7 @@ void HashTable::insert_item(string name) {
 			}
 			break;
 	}
+	//cout << name << endl;
 
 
 }
@@ -170,7 +173,7 @@ int HashTable::radixMethod(int key, int buckets) {
 	int newBase = 8;
 	int remainder = 1;
 	int dec = 1;
-	int hash = key;
+	int hash = 0;
 	while (key != 0) {
 		remainder = key % newBase;
 		key /= newBase;
@@ -190,6 +193,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	vector<string> names = read_data(argv[1]);
+	cout << names.size() << endl;
 
 	clock_t tStart = clock();
 
