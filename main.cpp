@@ -129,13 +129,11 @@ void HashTable::insert_item(string name) {
 				int tmp_index = index;
 				int counter = 1;
 				while(tmp_index != buckets-1 && tmp_index >= 0){
-					//cout << "Index is " << tmp_index << endl;
 					if(table[tmp_index].empty()){
 						table[tmp_index].push_back(name);
 						break;
 					}
 					else{
-						//cout << "Counter is " <<  counter << endl;
 						tmp_index += (counter*counter);
 						tmp_index = tmp_index % buckets;
 						counter++;
@@ -145,7 +143,6 @@ void HashTable::insert_item(string name) {
 			}
 			break;
 	}
-	//cout << name << endl;
 
 
 }
