@@ -71,7 +71,6 @@ void HashTable::insert_item(string name) {
 
 	int index = make_hash(name);
 
-
 	switch (coll_res) {
 		case 1: //chaining
 			table[index].push_back(name);
@@ -171,7 +170,7 @@ int HashTable::radixMethod(int key, int buckets) {
 	int newBase = 8;
 	int remainder = 1;
 	int dec = 1;
-	int hash = 0;
+	int hash = key;
 	while (key != 0) {
 		remainder = key % newBase;
 		key /= newBase;
